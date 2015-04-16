@@ -4,7 +4,9 @@ Heroku buildpack: Node.js with grunt support
 Supported Grunt versions: 0.3 and 0.4.
 See the Grunt [migration guide](https://github.com/gruntjs/grunt/wiki/Upgrading-from-0.3-to-0.4) if you are upgrading from 0.3.
 
-This is a fork of [Heroku's official Node.js buildpack](https://github.com/heroku/heroku-buildpack-nodejs) with added [Grunt](http://gruntjs.com/) support.
+This is a fork of stephanmelzer [custom heroku buildpack with grunt and compass support]( https://github.com/stephanmelzer/heroku-buildpack-nodejs-grunt-compass.git) which is a fork of [Heroku's official Node.js buildpack](https://github.com/heroku/heroku-buildpack-nodejs) with added [Grunt](http://gruntjs.com/) support.
+My version just fixes an anoying problem with heroku not finding grunt in the buildpath. Everything else is exactly the same.
+
 Using this buildpack you do not need to commit the results of your Grunt tasks (e.g. minification and concatination of files), keeping your repository clean.
 
 After all the default Node.js and npm build tasks have finished, the buildpack checks if a Gruntfile (`Gruntfile.js`, `Gruntfile.coffee`or `grunt.js`) exists and executes the `heroku` task by running `grunt heroku`. For details about grunt and how to define tasks, check out the [offical documentation](http://gruntjs.com/getting-started). You must add grunt to the npm dependencies in your `package.json` file.
@@ -31,18 +33,18 @@ Here's an overview of what this buildpack does:
 - Doesn't install grunt-cli every time.
 - Installs `compass`, caching it for future use.
 
-For more technical details, see the [heavily-commented compile script](https://github.com/stephanmelzer/heroku-buildpack-nodejs-grunt-compass/blob/master/bin/compile).
+For more technical details, see the [heavily-commented compile script](https://github.com/pauloalem/heroku-buildpack-nodejs-grunt-compass/blob/master/bin/compile).
 
 Usage
 -----
 
 Create a new app with this buildpack:
 
-    heroku create myapp --buildpack heroku config:add BUILDPACK_URL=https://github.com/stephanmelzer/heroku-buildpack-nodejs-grunt-compass.git
+    heroku create myapp --buildpack heroku config:add BUILDPACK_URL=https://github.com/pauloalem/heroku-buildpack-nodejs-grunt-compass.git
 
 Or add this buildpack to your current app:
 
-    heroku config:add BUILDPACK_URL=https://github.com/stephanmelzer/heroku-buildpack-nodejs-grunt-compass.git
+    heroku config:add BUILDPACK_URL=https://github.com/pauloalem/heroku-buildpack-nodejs-grunt-compass.git
 
 Set the `NODE_ENV` environment variable (e.g. `development` or `production`):
 
