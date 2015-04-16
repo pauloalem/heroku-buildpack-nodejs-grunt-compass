@@ -183,7 +183,10 @@ echo "export PATH=\"\$HOME/.gem/ruby/1.9.1/bin:\$PATH\"" > $build_dir/.profile.d
     fi
 
     status "Running grunt heroku:$NODE_ENV task"
-    $build_dir/node_modules/.bin/grunt heroku:$NODE_ENV
+    # make sure that grunt and grunt-cli are installed
+    npm install grunt-cli
+    npm install grunt
+    $build_dir/node_modules/.bin/grunt heroku
   fi
 )
 
